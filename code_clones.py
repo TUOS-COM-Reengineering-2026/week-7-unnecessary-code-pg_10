@@ -26,9 +26,14 @@ def compute_jaccard_similarity(a: str, b: str) -> float:
     a_content = read_file(a).splitlines()
     b_content = read_file(b).splitlines()
 
-    # TODO: Implement the rest of this function
+    a = set(a_content)
+    b = set(b_content)
 
-    return 0
+    return len(a & b) / len(a | b)
+
+
+
+
 
 def visualise_dot_plot(a: str, b: str) -> str:
     a_content = read_file(a).splitlines()
@@ -77,6 +82,30 @@ def visualise_dot_plot(a: str, b: str) -> str:
     '''
 
     plot += '\t'
-    plot += '-' * 80
 
+    # Plot the x labels
+    for i in range(len(a_content)):
+        plot += f"x{i}	"
+    plot += '\n'
+
+    # Plot the y labels and the dots
+    for j in range(len(b_content)):
+        plot += f"y{j}	"
+
+
+        # dots
+        for i in range(len(a_content)):
+            if a_content[i] == b_content[j]:
+                plot += f"*	"
+            else:
+                plot += f" 	"
+
+        plot += '\n'
+
+
+
+
+
+    plot += '-' * 80
+    print(plot.strip())
     return plot.strip()

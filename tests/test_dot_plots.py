@@ -4,6 +4,7 @@ from code_clones import visualise_dot_plot
 
 class MyTestCase(unittest.TestCase):
     def test_visualise_dot_plot_simples(self):
+        self.maxDiff =None
         base_dir = os.path.dirname(__file__)
         a = os.path.join(base_dir, 'resources', 'simple1.py')
         b = os.path.join(base_dir, 'resources', 'simple2.py')
@@ -39,6 +40,7 @@ y7	 	 	 	 	 	 	*
 
 
     def test_visualise_dot_plot_programs(self):
+        self.maxDiff =None
         base_dir = os.path.dirname(__file__)
         a = os.path.join(base_dir, 'resources', 'program1.py')
         b = os.path.join(base_dir, 'resources', 'program2.py')
